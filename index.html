@@ -1,0 +1,304 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>花之遇——花卉知识网</title>
+    <link rel="stylesheet" href="css/index.css">
+     <script>
+        window.onload=function(){
+            var imgList = document.getElementById("imgList");
+            var imgArr = document.getElementsByTagName("img");
+            imgList.style.width = 1020 * imgArr.length + "px";
+            // 导航按钮居中
+            // var imgDivli=document.getElementsById("navDiv");
+            // var allA=document.getElementsByTagName("li");//放到最上面 避免代码复用
+            // li 需要先选中父辈的id 之后选中其中的li
+            var navDiv=document.getElementById("navDiv");
+            var outer=document.getElementById("outer");
+            navDiv.style.left=(outer.offsetWidth-navDiv.offsetWidth)/2+"px";
+            // 默认选中效果
+            var index=7;
+            allA[index].style.backgroundColor="pink";
+            for(let i=0;i<allA.length;i++){
+                allA[i].num=i;
+                allA[i].onclick=function(){
+                    // 获取点击超链接的索引，将其设置为index
+                    index=this.num;
+                    // 切换图片
+                    // 第一张 7 0
+                    // 第二张 8 -1020
+                    // 第三张 9 -2040
+                    imgList.style.left=-1020*(index-7)+"px";
+                    // 使用move函数切换图片
+                    // move(imgList,"left",-1020*(index-7),20,function(){
+
+                    // })
+                    setA();
+                    // 开启自动切换图片
+                    // autoChange();
+                    // 修改选中的a
+                    function setA(){
+                        // 判断当前索引是否是第一张图片
+                        if(index>=(imgArr-7).length-1){
+                            // 则将index设置为7
+                            index=7;
+                        }
+                        // 遍历所有a,将背景设置为粉色
+                        for(var i=0;i<allA.length;i++){
+                            allA[i].style.backgroundColor="";
+                        }
+                        // 将选中的a设为粉色
+                        allA[index].style.backgroundColor="pink";
+                    }
+                    // 创建一个函数，用来开启自动切换图片
+                    // function autoChange(){
+                    //     // 开启定时器
+                    //     setInterval(function(){
+                    //         // 索引自增
+                    //         index++;
+                    //         // 判断index的值
+                    //         index%=(imgArr+7).length;
+                    //         move(imgList,"left",-1020*(index-7),20,function(){
+                    //             // 修改导航按钮
+                    //             setA();
+                    //         });
+                    //     },3000);
+                    // }
+                }
+            }
+        }
+    </script>
+</head>
+<body>
+    <!-- 结构 -->
+    <!-- 页面头部分 -->
+    <header>
+        <nav>
+            <!-- logo部分 -->
+            <div class="logo">
+                <img src="img/logo03.PNG" />
+            </div>
+            <!-- 导航栏部分 -->
+            <div class="navbar">
+                <ul>
+                    <li><a href="index.html">首页</a></li>
+                    <li><a href="知花.html">知花</a></li>
+                    <li><a href="养花.html">养花</a></li>
+                    <li><a href="赏花.html">赏花</a></li>
+                    <li><a href="花语.html">花语</a></li>
+                </ul>
+            </div>
+            <div class="navbar-2">
+                <ul>
+                    <li><a href="登录.html">登录</a></li>
+                    <li><a href="注册.html">注册</a></li>
+                </ul>
+            </div>
+        </nav>
+    </header>
+    <!-- banner部分 -->
+    <div class="banner">
+         <div class="banner-in container">
+            <!-- 创建一个外部的div,来作为大的容器 -->
+        <div id="outer">
+                <!-- 创建一个ul，用于放置图片 -->
+                <ul id="imgList">
+                    <li><img src="img/spring.jpg" alt="spring"></li>
+                    <li><img src="img/summer.jpg" alt="summer"></li>
+                    <li><img src="img/autumn.jpg" alt="autumn"></li>
+                    <li><img src="img/winter.jpg" alt="winter"></li>
+                    <li><img src="img/spring.jpg" alt="spring"></li>
+                </ul>
+                <ul id="navDiv">
+                   <li></li>
+                   <li></li>
+                   <li></li>
+                   <li></li>
+                   <li></li>
+                    <a href="#"></a>
+                </ul>
+            </div>   
+        </div>
+        <div id="banner2">
+            <div id="photo">
+                <a href="#"><h2>花卉图片 ></h2></a>
+                <hr>
+                <ul id="flowerList">
+                    <li><a href="#"><img src="img/金银花盆景.jpg" alt="金银花盆景"><br>
+                        金银花盆景</a></li>
+                    <li><a href="#"><img src="img/百日菊.jpg" alt="百日菊"><br>
+                        百日菊</a></li>
+                    <li><a href="#"><img src="img/满天星.jpg" alt="满天星"><br>
+                        满天星</a></li>
+                    <li><a href="#"><img src="img/朱顶红.jpg" alt="朱顶红"><br>
+                        朱顶红</a></li>
+                    <li><a href="#"><img src="img/吊兰.jpg" alt="吊兰"><br>
+                        吊兰</a></li>
+                    <li><a href="#"><img src="img/晚香玉.jpg" alt="晚香玉"><br>
+                        晚香玉</a></li>
+                </ul>
+            </div>
+        </div>
+        <div class="banner3">
+            <div id="know">
+                <a href="知花.html"><h2>知花 ></h2></a>
+                <hr>
+                <ul id="flowerList">
+                    <li><a href="#"><h3>草本花卉</h3><p>百日菊|春兰|香堇|慈菇花|芍药|风信子|郁金香|紫罗兰|金鱼草|长春菊|瓜叶菊|香豌豆|夏兰|石竹|石蒜|荷花|翠菊|睡莲|满天星|天竺葵</p></a></li>
+                    <li><a href="#"><h3>木本花卉</h3><p>月季花|梅花|桃花|牡丹|海棠|玉兰|木笔|紫荆|连翘|金钟|丁香|紫藤|春鹃|杜鹃花|石榴|含笑花|白兰花|茉莉花|栀子花|桂花|木芙蓉|腊梅|免牙红</p></a></li>
+                    <li><a href="#"><h3>多肉植物</h3><p>荷叶莲|白美人|红宝石|姬胧月|八千代|姬玉露|条纹十二卷|吉娃莲|乙女心|千佛手|冬美人|桃美人</p></a></li>
+                </ul>
+            </div>
+            <div id="daily">
+                <a href="养花.html"><h2>养花 ></h2></a>
+                <hr>
+                <ul id="flowerList">
+                    <li><a href="光照.html"><img src="img/光照.jpg" alt="光照"><br>
+                        光照对花有什么影响 光照对花朵生长的影响有哪些</a></li>
+                    <li><a href="墨兰.html">墨兰叶子出现小黑点怎么办 墨兰叶子出现小黑点什么原因</a></li>
+                    <li><a href="病虫害.html">花卉有病虫害怎么治 春天花卉最容易得的几种病虫害</a></li>
+                    <li><a href="水仙花.html">水仙花烂根怎么办 水仙花烂根是什么原因</a></li>
+                    <li><a href="小飞虫.html">家里有小飞虫怎么办 花盆里发现有小飞虫怎么处理</a></li>
+                    <li><a href="康乃馨.html">康乃馨烂根怎么办 康乃馨烂根什么原因</a></li>
+                </ul>
+            </div>
+            <div id="speak">
+                <a href="赏花.html"><h2>赏花 ></h2></a>
+                <hr>
+                <div class="enjoy">
+                    <table id="employeeTable">
+                        <tr>
+                            <th id="e1">日期：</th>
+                            <th id="e2">标签：</th>
+                            <th id="e3">留言：</th>
+                            <th id="e4">删除：</th>
+                        </tr>
+                        <tr>
+                            <td>2017/5/12</td>
+                            <td>#玫瑰#</td>
+                            <td><img src="img/玫瑰.jpg" alt="玫瑰" style="width: 280px;height: 180px;"><br>
+                                家里的玫瑰开了，给大家看一看照片。</td>
+                            <td><a href="#">删除</a></td>
+                        </tr>
+                    </table>
+                    <table>
+                        <tr>
+                            <td class="word">日期:</td>
+                            <td class="inp"><input type="text" id="name"></td>
+                        </tr>
+                        <tr>
+                            <td class="word">标签:</td>
+                            <td class="inp"><input type="text" id="tag"></td>
+                        </tr>
+                        <tr>
+                            <td class="word">留言:</td>
+                            <td class="inp"><textarea name="textarea" id="salary" cols="50" rows="3"></textarea></td>
+                        </tr>
+                        <tr>
+                            <td><button id="button">submit</button></td>
+                        </tr>
+                    </table>
+                </div>
+            </div>
+            <div id="flowerlanguage">
+                <a href="花语.html"><h2>花语 ></h2></a>
+                <hr>
+                <ul id="flowerList">
+                    <li><a href="彼岸花.html"><img src="img/彼岸花.jpg" alt=""><br>
+                        彼岸花的花语是什么</a></li>
+                    <li><a href="蓝色妖姬.html">蓝色妖姬花语是什么</a></li>
+                    <li><a href="马蹄莲.html">白色马蹄莲的花语是什么</a></li>
+                    <li><a href="风信子.html">各种颜色的风信子的花语是什么</a></li>
+                    <li><a href="鸢尾.html">鸢尾(爱丽斯)的花语是什么</a></li>
+                    <li><a href="白色百合.html">白色百合的花语是什么</a></li>
+                </ul>
+            </div>
+        </div>
+        <div id="banner4">
+            <a href="#"><h2>樱花视频 ></h2></a>
+            <hr>
+            <div id="video">
+                <iframe src="http://player.bilibili.com/player.html?aid=2252139&cid=3511643&page=1" scrolling="no" border="0" frameborder="no" framespacing="0" allowfullscreen="true" style="width: 400px;height: 250px;"> </iframe>
+                <p>好想和你一起，欣赏这浪漫樱花</p>
+            </div>
+            <div id="good">
+                <a href="#"><h2>精彩推荐 ></h2></a>
+                <hr>
+                <ul id="flowerList">
+                    <li><a href="#"><img src="img/含羞草.jpg" alt="含羞草"><br>
+                        哪些花是不适合养在室内</a></li>
+                    <li><a href="#">迷你玫瑰怎么修剪 迷你玫瑰的修剪方法和注意事项</a></li>
+                    <li><a href="#">多肉虎刺梅怎么养 多肉虎刺梅的养殖方法和注意事项</a></li>
+                    <li><a href="#">老人养花要注意什么 老人养花有什么好处</a></li>
+                    <li><a href="#"><img src="img/百合花.jpg" alt="百合花"><br>
+                        百合插在水中如何养 百合花插在水里怎么养</a></li>
+                    <li><a href="#">小花盆适合养什么花 小花盆适合养什么植物</a></li>
+                </ul>
+            </div>
+            <div id="health">
+                <a href="#"><h2>花卉与健康 ></h2></a>
+                <hr>
+                <ul id="flowerList">
+                    <li><a href="#"><img src="img/香雪兰.jpg" alt="香雪兰"><br>
+                        香雪兰有毒吗 能在家中养护吗</a></li>
+                    <li><a href="#">虎皮兰适合放在卧室吗 虎皮兰放在卧室养好吗</a></li>
+                    <li><a href="#">怀孕家里适合养什么花 怀孕家里不能养什么花</a></li>
+                    <li><a href="#">家里有宝宝适合养什么花 家有小孩适合养什么花</a></li>
+                    <li><a href="#">家里摆放什么植物能净化空气 哪些植物可以净化空气</a></li>
+                    <li><a href="#"><img src="img/茉莉花.jpg" alt="茉莉花"><br>
+                        喝茉莉花茶要注意什么 什么时候喝茉莉花茶好</a></li>
+                    <li><a href="#">冬天泡脚用什么好 艾草泡脚的好处</a></li>
+                </ul>
+            </div>
+        </div>
+    </div>
+    <!-- footer部分 -->
+    <footer>
+        <div class="footer">
+            <div class="footer_center">
+                <div class="container">
+                    <section class="one_fourth">
+                        <h3>关于我们</h3>
+                        <ul class="list">
+                            <li><a href="#">网站介绍</a></li>
+                            <li><a href="#">疑难问题</a></li>
+                            <li><a href="#">招贤纳士</a></li>
+                            <li><a href="#">联系我们</a></li>
+                        </ul>
+                    </section>
+                    <section class="one_fourth">
+                        <ul class="list">
+                            <h3>相关网站</h3>
+                            <li><a href="https://www.huabaike.com/">花百科</a></li>
+                            <li><a href="http://www.yuhuagu.com/">浴花谷</a></li>
+                            <li><a href="https://www.huajiang.cc/">花匠网</a></li>
+                            <li><a href="https://baike.baidu.com/item/%E8%8A%B1%E5%8D%89/229536?fromtitle=%E8%8A%B1&fromid=9981040&fr=aladdin">花</a></li>
+                        </ul>
+                    </section>
+                    <section class="one_fourth">
+                        <ul class="list">
+                            <h3>养花常识</h3>
+                            <li><a href="#">常见疾病</a></li>
+                            <li><a href="#">适宜气候</a></li>
+                            <li><a href="#">修枝剪枝</a></li>
+                            <li><a href="#">施肥养护</a></li>
+                        </ul>
+                    </section>
+                    <section class="one_fourth last">
+                        <h3>关注我们</h3>
+                        <div><a href="#"><img src="img/二维码.PNG" alt="二维码"></a></div>
+                    </section>
+                </div>
+            </div>
+        </div>
+        <div id="copyright_info">
+            <div class="container">
+                <div>Copyright © 2019 版权所有 Email: <a href="#">1014044412@qq.com</a></div>
+            </div>
+        </div>
+    </footer>
+    <!-- footer部分结束 -->
+</body>
+</html>

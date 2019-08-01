@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <script>
+        window.onload=function(){
+            // 使图片可以自动切换
+            // 获取img标识
+            var img1=document.getElementById("img1"); 
+            // 创建一个数组来保存图片路径
+            var imgArr=["img/spring.jpg","img/summer.jpg","img/autumn.jpg","img/winter.jpg"]
+            // 创建一个变量，用来存储当前图片索引
+            var index=0;
+            var timer;
+            // 在开启定时器前，需要加上一个定时器关闭
+            clearInterval(timer);
+            // 为button绑定一个单击相应函数
+            var btn01=document.getElementById("btn01");
+            btn01.onclick=function(){
+                // 开启一个定时器
+                timer=setInterval(function(){
+                    // 使索引自增
+                    index++;
+                    // 判断索引是否超过最大索引
+                    if(index>=imgArr.length){
+                        // 则将index设为0
+                        index=0;
+                    }
+                    // 或index=index%imgArr.length;
+                    // 修改img1的属性
+                    img1.src=imgArr[index]
+                },3000)
+            }
+            // 为btn02绑定单击响应函数
+            var btn02=document.getElementById("btn02");
+            btn02.onclick=function(){
+                clearInterval(timer);
+            }
+        }
+    </script>
+</head>
+<body>
+    <img id="img1" src="img/spring.jpg" alt="图片无法加载">     
+    <br/>
+    <button id="btn01">开始</button>
+    <button id="btn02">停止</button>
+   </div>
+</body>
+</html>

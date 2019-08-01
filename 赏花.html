@@ -1,0 +1,200 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>赏花</title>
+    <link rel="stylesheet" href="css/赏花.css">
+    <script>
+        // 删除tr的响应函数
+        function delA(){
+            // 点击超链接以后，删除超链接所在的一行
+            // 点击哪个超链接this就是谁
+            // 获取当前tr
+            var tr=this.parentNode.parentNode;
+            // 删除前添加提示框
+            // 获取要删除的帖子的日期
+            var name=tr.getElementsByTagName("td")[0].innerHTML;
+            var flag=confirm("确认删除"+name+"吗？");
+            // confirm()返回确认、取消键，ture、false
+            // 如果用户点击确认
+            if(flag){
+                // 删除tr
+                tr.parentNode.removeChild(tr);
+               }
+            return false;  //取消跳转    
+        }
+        window.onload=function(){
+            // 点击超链接，删除信息
+            // 获取所有超链接
+            var allA=document.getElementsByTagName("a");
+            // 为每一个超链接绑定单机响应函数
+            for(var i=0;i<allA.length;i++){
+                // for循环先执行，响应函数后执行。i=3
+                allA[i].onclick=delA;
+                // 响应函数后执行，永远3
+            }
+            // 添加功能，点击按钮后，将信息添加到表格中
+            // 为提交按钮绑定一个单机响应函数
+            var button=document.getElementById("button");
+            button.onclick=function(){
+                // 获取填写的用户信息
+                // 获取日期
+                var name=document.getElementById("name").value;
+                // 获取标签和
+                var email=document.getElementById("tag").value;
+                var salary=document.getElementById("salary").value;
+                // alert(name+","+tag+","+salary);
+                // 创建一个tr
+                var tr=document.createElement("tr");
+                // 设置tr中的内容
+                tr.innerHTML="<td>"+name+"</td>"+
+                             "<td>"+email+"</td>"+
+                             "<td>"+salary+"</td>"+
+                             "<td><a href='#'>删除</a></td>";
+                var a=tr.getElementsByTagName("a")[0];
+                a.onclick=delA;             
+
+                // 获取table
+                var employeeTable=document.getElementById("employeeTable");
+                // 获取employeeTable中的tbody
+                var tbody=employeeTable.getElementsByTagName("tbody")[0];
+                // 将tr添加到tbody中
+                tbody.appendChild(tr);
+            }
+        }
+    </script>
+</head>
+<body>
+    <!-- 页面头部分 -->
+    <header>
+        <nav>
+            <!-- logo部分 -->
+            <div class="logo">
+                <img src="img/logo03.PNG" />
+            </div>
+            <!-- 导航栏部分 -->
+            <div class="navbar">
+                <ul>
+                    <li><a href="index.html">首页</a></li>
+                    <li><a href="知花.html">知花</a></li>
+                    <li><a href="养花.html">养花</a></li>
+                    <li><a href="赏花.html">赏花</a></li>
+                    <li><a href="花语.html">花语</a></li>
+                </ul>
+            </div>
+            <div class="navbar-2">
+                <ul>
+                    <li><a href="登录.html">登录</a></li>
+                    <li><a href="注册.html">注册</a></li>
+                </ul>
+            </div>
+        </nav>
+    </header>
+    <div id="main">
+        <p>当前位置 : > 赏花日记 ></p><hr>
+        <div class="enjoy">
+            <table id="employeeTable">
+                <tr>
+                    <th id="e1">日期：</th>
+                    <th id="e2">标签：</th>
+                    <th id="e3">留言：</th>
+                    <th id="e4">删除：</th>
+                </tr>
+                <tr>
+                    <td>2017/5/12</td>
+                    <td>#玫瑰#</td>
+                    <td><img src="img/玫瑰.jpg" alt="玫瑰" style="width: 300px;height: 200px;"><br>
+                        家里的玫瑰开了，给大家看一看照片。</td>
+                    <td><a href="#">删除</a></td>
+                </tr>
+                <tr>
+                    <td>2018/5/10</td>
+                    <td>#求助#</td>
+                    <td>康乃馨烂根怎么办？马上就到母亲节了，养了一些康乃馨准备送给妈妈，早上发现康乃馨有点烂根，应该怎么办？</td>
+                    <td><a href="#">删除</a></td>
+                </tr>
+                <tr>
+                    <td>2018/7/20</td>
+                    <td>#荷花#</td>
+                    <td><img src="img/14.jpg" alt="荷花" style="width: 200px;height: 300px;"><br>
+                    美美哒荷花~^_^</td>
+                    <td><a href="#">删除</a></td>
+                </tr>
+                <tr>
+                    <td>2019/3/20</td>
+                    <td>#樱花#</td>
+                    <td><img src="img/日本樱花.jpg" alt="樱花" style="width: 300px;height: 200px;"><br>
+                    樱花开了，春天来了</td>
+                    <td><a href="#">删除</a></td>
+                </tr>
+            </table>
+        
+            <table>
+                <tr>
+                    <td class="word">日期:</td>
+                    <td class="inp"><input type="text" id="name"></td>
+                </tr>
+                <tr>
+                    <td class="word">标签:</td>
+                    <td class="inp"><input type="text" id="tag"></td>
+                </tr>
+                <tr>
+                    <td class="word">留言:</td>
+                    <td class="inp"><textarea name="textarea" id="salary" cols="50" rows="5"></textarea></td>
+                </tr>
+                <tr>
+                    <td><button id="button">submit</button></td>
+                </tr>
+            </table>
+        </div>
+    </div>
+    <!-- footer部分 -->
+    <footer>
+        <div class="footer">
+            <div class="footer_center">
+                <div class="container">
+                    <section class="one_fourth">
+                        <h3>关于我们</h3>
+                        <ul class="list">
+                            <li><a href="#">网站介绍</a></li>
+                            <li><a href="#">疑难问题</a></li>
+                            <li><a href="#">招贤纳士</a></li>
+                            <li><a href="#">联系我们</a></li>
+                        </ul>
+                    </section>
+                    <section class="one_fourth">
+                        <ul class="list">
+                            <h3>相关网站</h3>
+                            <li><a href="https://www.huabaike.com/">花百科</a></li>
+                            <li><a href="http://www.yuhuagu.com/">浴花谷</a></li>
+                            <li><a href="https://www.huajiang.cc/">花匠网</a></li>
+                            <li><a href="https://baike.baidu.com/item/%E8%8A%B1%E5%8D%89/229536?fromtitle=%E8%8A%B1&fromid=9981040&fr=aladdin">花</a></li>
+                        </ul>
+                    </section>
+                    <section class="one_fourth">
+                        <ul class="list">
+                            <h3>养花常识</h3>
+                            <li><a href="#">常见疾病</a></li>
+                            <li><a href="#">适宜气候</a></li>
+                            <li><a href="#">修枝剪枝</a></li>
+                            <li><a href="#">施肥养护</a></li>
+                        </ul>
+                    </section>
+                    <section class="one_fourth last">
+                        <h3>关注我们</h3>
+                        <div><a href="#"><img src="img/二维码.PNG" alt="二维码"></a></div>
+                    </section>
+                </div>
+            </div>
+        </div>
+        <div id="copyright_info">
+            <div class="container">
+                <div>Copyright © 2019 版权所有 Email: <a href="#">1014044412@qq.com</a></div>
+            </div>
+        </div>
+    </footer>
+    <!-- footer部分结束 -->
+</body>
+</html>
